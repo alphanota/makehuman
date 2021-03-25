@@ -139,17 +139,17 @@ def set_sys_path():
     Append local module folders to python search path.
     """
     #[BAL 07/11/2013] make sure we're in the right directory
-    if not sys.platform.startswith('darwin'): # Causes issues with py2app builds on MAC
-        os.chdir(getCwd())
-        syspath = ["./", "./lib", "./apps", "./shared", "./apps/gui","./core"]
-        syspath.extend(sys.path)
-        sys.path = syspath
-    else:
-        data_path = "../Resources/makehuman"
-        os.chdir(data_path)
-        syspath = ["./lib", "./apps", "./shared", "./apps/gui", "./core", "../lib", "../"]
-        syspath.extend(sys.path)
-        sys.path = syspath
+    # if not sys.platform.startswith('darwin'): # Causes issues with py2app builds on MAC
+    os.chdir(getCwd())
+    syspath = ["./", "./lib", "./apps", "./shared", "./apps/gui","./core"]
+    syspath.extend(sys.path)
+    sys.path = syspath
+    # else:
+    #     data_path = "../Resources/makehuman"
+    #     os.chdir(data_path)
+    #     syspath = ["./lib", "./apps", "./shared", "./apps/gui", "./core", "../lib", "../"]
+    #     syspath.extend(sys.path)
+    #     sys.path = syspath
 
     if isBuild():
         # Make sure we load packaged DLLs instead of those present on the system
